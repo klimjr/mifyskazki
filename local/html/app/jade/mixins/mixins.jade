@@ -1,0 +1,310 @@
+//- LOGO BLOCK
+mixin logoBlock(img)
+    .logo-block
+        a(href='/' title='logo-title')
+            img(src=img alt='logo')
+
+
+
+//- MAIN MENU
+mixin mainMenu(menu, toggle, search)
+    nav.main-menu
+        if (search)
+            .row
+                .col-xs-12.col-sm-10.col-sm-offset-2.col-md-8.col-md-offset-4
+                    .header-search
+                        form(action='', method='post', enctype='')
+                            fieldset
+                                .form-group
+                                    label.sr-only(for='search-query')
+                                    input.form-control(type='text', name='query', id='search-query', placeholder='Поиск по сайту')
+                                button.btn.btn-success(type='submit')
+                                    span.glyphicon.glyphicon-search
+        .row
+            .col-xs-12
+                ul#main-menu
+                    each val, index in menu
+                        if (index == 0)
+                            - var className = 'active'
+                        else
+                            - var className = ''
+                        li(class=className)
+                            a(href=val.link, title=val.title)
+                                span= val.title
+
+                if (toggle)
+                    .nav-toggle-button#mobile-menu(target="#main-menu")
+                        span
+                        span
+                        span
+
+
+mixin toggleMenu(menu)
+    nav.toogle-menu
+        ul
+            each val, index in menu
+                li
+                    a(href='#', title=val)=val
+                    .toggle-block
+                        ul
+                            li
+                                a(href='#') Окорока
+                                    span (24)
+                            li
+                                a(href='#') Мясная нарезка
+                                    span (24)
+                            li
+                                a(href='#') Колбаса и салями
+                                    span (24)
+                            li
+                                a(href='#') Мясные деликатесы
+                                    span (24)
+                            li
+                                a(href='#') Мясные деликатесы из дичи
+                                    span (24)
+
+
+mixin menu(menu, className, count)
+    nav(class=className)
+        ul
+            each val in menu
+                li
+                    a(href=val.link, title=val.title)=val.title
+
+
+//- BXSLIDER
+mixin bxSlider(slides)
+    ul.bxslider
+        each val, index in slides
+            li
+                .image-wrap
+                    img(src=val.image title=val.title)
+                if (val.text)
+                    .description-wrap
+                        .block-title=val.title
+                        .block-info=val.text
+                        .buttons-block
+                            a.btn.btn-default(href='#' title='Посмотреть') Посмотреть
+
+
+mixin heroUnit(slides)
+    ul.bxslider
+        each val, index in slides
+            li
+                .image-wrap
+                    img(src=val.src title=val.title)
+                    .slide-description
+                        .title
+                            a(href='#')=val.title
+                        .description=val.text
+                        .info
+                            a.part(href="#")=val.part
+                            a.user(href="#")=val.username
+                                span.glyphicon.glyphicon-user
+                            a.comments(href="#")=val.com
+                                span.glyphicon.glyphicon-comment
+                            +ratingBlock()
+                .do-you-now-block
+                    .title А занаете ли вы, что ...
+                    .description ... гранчеола — принадлежит к большим ракообразным, из семейства крабовых. Длина его тела достигает 20 см.
+
+
+mixin ratingBlock()
+    .rating-block
+        img(src='images/rating/Y25.png')
+        img(src='images/rating/A25.png')
+        img(src='images/rating/Y25.png')
+        img(src='images/rating/A12.png')
+        img(src='images/rating/Y1.png')
+
+
+
+
+//- PHONE BLOCK
+mixin phoneBlock(phone)
+    .phone-block
+        div
+            a(href='tel:#{phone}')=phone
+
+
+//- SOCIAL BLOCK
+mixin socialBlock(social)
+    .social-block
+        ul
+            each val, index in social
+                li
+                    a(href=val.href title=index)
+                        span(class=val.class)
+
+
+
+//- NEWS BLOCK
+mixin newsBlock(news_items)
+    .news-block-wrap
+        .row
+            each val, index in news_items
+                .col-xs-12.col-sm-3
+                    .news-item
+                        .image-wrap
+                            a(href='#')
+                                img(src=val.image alt=val.title)
+                        .description-wrap
+                            a(href='#')=val.title
+                            .date=val.date
+                            div=val.text
+
+
+
+
+//- SERACH BLOCK
+mixin searchBlock(placeholder)
+    .search-block
+        form(action="" method="get" enctype="application/x-www-form-urlencoded" name="search" role="form")
+            fieldset
+                .form-group
+                    label
+                        input.form-control(type='text' name='query' placeholder=placeholder)
+                button.btn
+                    span.glyphicon.glyphicon-search
+
+
+//- CATALOG BLOCK
+mixin catalogBox(items, count)
+    .row.catalog-box-wrap
+        each val, index in items
+            div(class=count)
+                .catalog-item-box
+                    if (val.cart)
+                        .cart-item(title='Товар находится в корзине')
+                            span.glyphicon.glyphicon-shopping-cart
+                    .image-wrap
+                        a(href='#', title=val.name)
+                            img(src=val.src, alt=val.name)
+                    .info
+                        if (val.price)
+                            .price-block
+                                .price-block-cell
+                                    div=val.price
+                                        span.glyphicon.glyphicon-ruble
+                                    if (val.oldprice)
+                                        div.old-price=val.oldprice
+                                            span.glyphicon.glyphicon-ruble
+                        if (val.user)
+                            a.user(href='')=val.user
+                                span.glyphicon.glyphicon-user
+                        a.comments(href='')=val.com
+                            span.glyphicon.glyphicon-comment
+                        +ratingBlock()
+                    .description
+                        .title
+                            a(href='#', title=val.name)=val.name
+                        .text=val.text
+                    if (val.buy)
+                        .buy-block(data-target=index)
+                            form(class="form-inline" method="get" action="" enctype="application/x-www-form-urlencoded" name="add_to_cart")
+                                fieldset
+                                    .form-group
+                                        label
+                                            .input-group
+                                                .input-group-addon.buy-block-minus.change-count(data-action="minus")
+                                                    span.glyphicon.glyphicon-minus
+                                                input(type="text" name="quantity" class="form-control buy-count" id=index placeholder="" value="1" maxlength="5" data-step="1" data-unit="1")
+                                                .input-group-addon.buy-block-unit шт
+                                                .input-group-addon.buy-block-plus.change-count(data-action="plus")
+                                                    span.glyphicon.glyphicon-plus
+
+                                                input(type="hidden" name="item_id" value="262")
+                                                input(type="hidden" value="add_to_cart" name="do")
+
+                                    .button(type="submit" class="btn btn-sm") Купить
+                                    input(type="hidden" name="sendAjaxForm" value="yes")
+
+mixin catalogSmallBox(items)
+    .catalog-small-items
+        each val, index in items
+            .catalog-small-item
+                .image-wrap
+                    a(href='#', title=val.name)
+                        img(src=val.src, alt=val.name)
+                .description
+                    .title
+                        a(href='#', title=val.name)=val.name
+                    if (val.price)
+                        .price-line
+                            span=val.price
+                                span.glyphicon.glyphicon-ruble
+                            if (val.oldprice)
+                                span.old-price=val.oldprice
+                                    span.glyphicon.glyphicon-ruble
+
+
+mixin pagination()
+    .pagination
+        ul
+            li
+                a(href='#') 1
+            li ...
+            li
+                a(href='#') 4
+            li.active
+                a(href='#') 5
+            li
+                a(href='#') 6
+            li
+                a(href='#') 7
+            li
+                a(href='#') 8
+            li ...
+            li
+                a(href='#') 42
+
+
+mixin advertisingBlock(slides)
+    .advertising-block
+        .block-title-bold.block-title-line
+            span Акции
+        ul.bxslider
+            each val, index in slides
+                li
+                    .image-wrap
+                        a(href='#')
+                            img(src=val.src title=val.title)
+                            span
+                                span.title=val.title
+                                span.text=val.text
+
+
+mixin productsBlock(products)
+    .products-block
+        .container
+            .row
+                .col-xs-12
+                    .block-title Наша продукция
+            .row
+                each val, index in products
+                    .col-xs-12.col-sm-6.col-md-3
+                        .product-item.new
+                            .item-image-block
+                                a(href='#', title=val.title)
+                                    img(src=val.image, alt=val.title)
+                            .item-description-block
+                                .title
+                                    a(href='#', title=val.title)=val.title
+                                .text=val.text
+                                a.btn.btn-success(href='#', title='Заказать') Заказать
+
+mixin reviewsBlock(reviews)
+    .reviews-block
+        .container
+            .row
+                each val, index in reviews
+                    .col-xs-12.col-sm-4
+                        .reviews-item
+                            .reviews-text
+                                p=val.text
+                            .reviews-author
+                                .author-image
+                                    img(src=val.image, title=val.name)
+                                .author-info
+                                    .author-name=val.name
+                                    .author-city=val.city

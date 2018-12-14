@@ -1,0 +1,36 @@
+.container
+    .row
+        .col-xs-12.col-sm-3.col-md-3
+            +logoBlock('images/logo-gray.png')
+
+        .col-xs-12.col-sm-5.col-md-6
+            nav.footer-social
+                ul
+                    li
+                        a(href='#')
+                            span.icon.icon-facebook
+                    li
+                        a(href='#')
+                            span.icon.icon-vkontakte
+                    li
+                        a(href='#')
+                            span.icon.icon-instagram
+                    li
+                        a(href='#')
+                            span.icon.icon-youtube
+            .phone
+                a(href='tel:') +7 (495) 123-4567
+
+        .col-xs-12.col-sm-4.col-md-3
+            .subscribe-block
+                form(action='', method='post', enctype='')
+                    fieldset
+                        legend Подпишитесь на новости компании!
+                        .form-group
+                            label.sr-only(for='subscribe-email')
+                            input.form-control(type='email', name='subscribe-email', id='subscribe-email', placeholder='Введите Ваше имя')
+                        button.btn.btn-success(type='submit') Подписаться на новости!
+
+    .row
+        .col-xs-12
+            .copy &copy; Coppini © 2016.All rights reserved

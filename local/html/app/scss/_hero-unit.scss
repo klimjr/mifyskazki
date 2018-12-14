@@ -1,0 +1,30 @@
+// HERO UNIT BLOCK
+.hero-unit {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+.hero-unit-item {
+  width: 100%;
+  position: relative;
+  .image-wrap {
+    @include responsiveBox(100%, 0.342);
+    a {
+      display: block;
+      @include square(100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+.hero-unit-description {
+  display: none;
+}

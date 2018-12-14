@@ -1,0 +1,31 @@
+@import "fontello/animation";
+@import "fontello/fontello";
+@import "fontello/fontello-codes";
+@import "fontello/fontello-embedded";
+//@import "fontello/fontello-ie7";
+//@import "fontello/fontello-ie7-codes";
+
+
+
+@font-face {
+	font-family:'Roboto Slab';
+	src: url('../fonts/RobotoSlab-Regular.eot?v1.0');
+	src: url('../fonts/RobotoSlab-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/RobotoSlab-Regular.woff?v1.0') format('woff'),
+		url('../fonts/RobotoSlab-Regular.ttf?v1.0') format('truetype'),
+		url('../fonts/RobotoSlab-Regular.svg?v1.0') format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'Roboto Slab';
+	src: url('../fonts/RobotoSlab-Bold.eot?v1.0');
+	src: url('../fonts/RobotoSlab-Bold.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/RobotoSlab-Bold.woff?v1.0') format('woff'),
+	url('../fonts/RobotoSlab-Bold.ttf?v1.0') format('truetype'),
+	url('../fonts/RobotoSlab-Bold.svg?v1.0') format('svg');
+	font-weight: 800;
+	font-style: normal;
+}
+

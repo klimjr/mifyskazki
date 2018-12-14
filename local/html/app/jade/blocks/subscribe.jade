@@ -1,0 +1,12 @@
+.image-block.image-block-2
+    .container
+        .row
+            .col-xs-10.col-xs-offset-1.col-md-6.col-md-offset-3
+                .subscribe-block
+                    form(action='', method='post', enctype='')
+                        fieldset
+                            legend Подпишитесь на новости компании!
+                            .form-group
+                                label.sr-only(for='subscribe-email')
+                                input.form-control(type='email', name='subscribe-email', id='subscribe-email', placeholder='Введите Ваше имя')
+                            button.btn.btn-success(type='submit') Подписаться на новости!

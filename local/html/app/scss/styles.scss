@@ -1,0 +1,35 @@
+// Core variables and mixins
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+@import "bootstrap/print";
+
+// Core CSS
+@import "bootstrap/grid";
+
+// Components
+@import "bootstrap/button-groups";
+@import "bootstrap/buttons";
+@import "bootstrap/tables";
+@import "bootstrap/component-animations";
+@import "bootstrap/responsive-embed";
+
+// Utility classes
+@import "bootstrap/responsive-utilities";
+@import "mixins";
+@import "css3-mixins";
+@import "fonts";
+
+
+// Базовые стили
+@import "base";
+// Стили шапки
+@import "header";
+// Стили главного слайдера
+@import "bxslider";
+// Стили Меню
+@import "menu";
+// Стили для отображения текста
+@import "text";
+// Стили подвал
+@import "footer";

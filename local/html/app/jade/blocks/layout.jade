@@ -1,0 +1,12 @@
+include ../variables/variables
+include ../mixins/mixins
+
+doctype html
+html(lang='ru')
+    include head
+    body
+        block header
+        section.content-block
+            block content
+        footer.page-footer
+            block footer
